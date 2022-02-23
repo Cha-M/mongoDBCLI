@@ -36,6 +36,19 @@ class Movie {
         return await collection.find().toArray();
         //list all movies in the db
     }
+
+    async listActorFilms (collection) {
+        const arr =  await collection.find(
+            { actor : { $eq : this.actor} }
+            ).toArray();
+
+        console.log(arr);
+
+        return await collection.find(
+            { actor : { $eq : this.actor} }
+            ).toArray();
+        //list filtered in the db
+    }
 }
 
 module.exports = Movie;

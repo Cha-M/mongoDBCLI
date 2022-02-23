@@ -47,6 +47,11 @@ const app = async (yargsObj) => {
                 //list all movies in database
 
             }
+            else if (yargsObj.actorListFilms) {
+                const flick = new Movie (yargsObj.title, yargsObj.actor)
+                await flick.listActorFilms(collection);
+
+            }
             else {
                 console.log("Incorrect command");
                 console.log(yargsObj);
