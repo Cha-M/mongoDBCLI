@@ -43,7 +43,7 @@ class Movie {
         console.log(`"${this.title}" deleted from database`);
     }
 
-    async list (collection) {
+    async listFilms (collection) {
         console.log(await collection.find().toArray());
         //list all movies in the db
     }
@@ -53,7 +53,15 @@ class Movie {
         console.log(await collection.find(
             { actor : { $eq : this.actor} }
             ).toArray());
-        //list filtered in the db
+        //filtered list by actor
+    }
+    //Filter
+    async listInfoFilms (collection) {
+        console.log(await collection.find(
+            { info : { $eq : this.info} }
+            ).toArray());
+        //filtered list by info field
+
     }
 }
 

@@ -16,32 +16,47 @@ const app = async (yargsObj) => {
     const collection = await connection();
         try {
             const flick = new Movie(yargsObj.title, yargsObj.actor, yargsObj.info);
+            //C.reate
             if (yargsObj.add) {
                 await flick.add(collection);
                 //take movie info, add it to mongodb database and console.log a success message
             }
-            else if (yargsObj.delete) {
-                await flick.delete(collection);
-                //list all movies in database
-
-            }
+            //R.ead
             else if (yargsObj.read) {           
                 await flick.read(collection);
                 //log movie by title
     
             }
+            //U.pdate
             else if (yargsObj.update) {
                 await flick.update(collection);
                 //Update items
 
             }
-            else if (yargsObj.list) {
+            //D.elete
+            else if (yargsObj.delete) {
+                await flick.delete(collection);
+                //list all movies in database
+
+            }
+            else if (yargsObj.listFilms) {
                 await flick.list(collection);
                 //list all movies in database
 
             }
             else if (yargsObj.listActorFilms) {
                 await flick.listActorFilms(collection);
+                //log filtered list by actor
+                
+            }
+            else if (yargsObj.listInfoFilms) {
+                await flick.listInfoFilms(collection);
+                //log filtered list by info field
+                
+            }
+            else if (yargsObj.helpMe) {
+                console.log("Incorrect\ncommand");
+                //log filtered list by info field
                 
             }
             else {
