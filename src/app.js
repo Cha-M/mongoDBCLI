@@ -15,38 +15,33 @@ const Movie = require("./utils");
 const app = async (yargsObj) => {
     const collection = await connection();
         try {
+            const flick = new Movie(yargsObj.title, yargsObj.actor, yargsObj.info);
             if (yargsObj.add) {
-                const flick = new Movie(yargsObj.title, yargsObj.actor, yargsObj.info);
                 await flick.add(collection);
                 //take movie info, add it to mongodb database and console.log a success message
             }
             else if (yargsObj.delete) {
-                const flick = new Movie(yargsObj.title, yargsObj.actor, yargsObj.info);
                 await flick.delete(collection);
                 //list all movies in database
 
             }
-            else if (yargsObj.read) {
-                const flick = new Movie(yargsObj.title, yargsObj.actor, yargsObj.info);                
+            else if (yargsObj.read) {           
                 await flick.read(collection);
                 //log movie by title
     
             }
             else if (yargsObj.update) {
-                const flick = new Movie(yargsObj.title, yargsObj.actor, yargsObj.info);
                 await flick.update(collection);
                 // console.log(`"${yargsObj.title}" updated in database`);
                 //Update items
 
             }
             else if (yargsObj.list) {
-                const flick = new Movie(yargsObj.title, yargsObj.actor, yargsObj.info);
                 console.log(await flick.list(collection));
                 //list all movies in database
 
             }
             else if (yargsObj.listActorFilms) {
-                const flick = new Movie(yargsObj.title, yargsObj.actor, yargsObj.info);
                 console.log(await flick.listActorFilms(collection));
                 
             }
