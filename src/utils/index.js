@@ -35,10 +35,6 @@ class Movie {
             )
             console.log(`"${this.title}" updated in database.`);
 
-        // else {
-        //     console.log(`"${this.title}" not updated in database.`);
-        // }
-
     }
 
     //D.elete
@@ -48,21 +44,15 @@ class Movie {
     }
 
     async list (collection) {
-        return await collection.find().toArray();
+        console.log(await collection.find().toArray());
         //list all movies in the db
     }
 
     //Filter
     async listActorFilms (collection) {
-        // const arr =  await collection.find(
-        //     { actor : { $eq : this.actor} }
-        //     ).toArray();
-
-        // console.log(arr);
-
-        return await collection.find(
+        console.log(await collection.find(
             { actor : { $eq : this.actor} }
-            ).toArray();
+            ).toArray());
         //list filtered in the db
     }
 }

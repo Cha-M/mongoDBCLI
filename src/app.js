@@ -32,22 +32,21 @@ const app = async (yargsObj) => {
             }
             else if (yargsObj.update) {
                 await flick.update(collection);
-                // console.log(`"${yargsObj.title}" updated in database`);
                 //Update items
 
             }
             else if (yargsObj.list) {
-                console.log(await flick.list(collection));
+                await flick.list(collection);
                 //list all movies in database
 
             }
             else if (yargsObj.listActorFilms) {
-                console.log(await flick.listActorFilms(collection));
+                await flick.listActorFilms(collection);
                 
             }
             else {
                 console.log("Incorrect command");
-                // console.log(yargsObj);
+
 
             }
             await client.close();
