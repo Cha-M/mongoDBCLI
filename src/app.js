@@ -16,45 +16,44 @@ const app = async (yargsObj) => {
     const collection = await connection();
         try {
             if (yargsObj.add) {
-                const flick = new Movie(yargsObj.title, yargsObj.actor);
-                console.log(await flick.add(collection));
+                const flick = new Movie(yargsObj.title, yargsObj.actor, yargsObj.info);
+                await flick.add(collection);
                 //take movie info, add it to mongodb database and console.log a success message
             }
             else if (yargsObj.delete) {
-                const flick = new Movie (yargsObj.title, yargsObj.actor)
+                const flick = new Movie(yargsObj.title, yargsObj.actor, yargsObj.info);
                 await flick.delete(collection);
-                console.log("Title deleted once: ", yargsObj.title);
                 //list all movies in database
 
             }
             else if (yargsObj.read) {
-                const flick = new Movie (yargsObj.title, yargsObj.actor)
-                console.log("Title: ", yargsObj.title);
-                
-                console.log(await flick.read(collection));
+                const flick = new Movie(yargsObj.title, yargsObj.actor, yargsObj.info);                
+                await flick.read(collection);
                 //log movie by title
     
             }
             else if (yargsObj.update) {
-                const flick = new Movie (yargsObj.title, yargsObj.actor)
-                console.log(await flick.update(collection));
-                //list all movies in database
+                const flick = new Movie(yargsObj.title, yargsObj.actor, yargsObj.info);
+                await flick.update(collection);
+                // console.log(`"${yargsObj.title}" updated in database`);
+                //Update items
 
             }
             else if (yargsObj.list) {
-                const flick = new Movie (yargsObj.title, yargsObj.actor)
+                const flick = new Movie(yargsObj.title, yargsObj.actor, yargsObj.info);
                 console.log(await flick.list(collection));
                 //list all movies in database
 
             }
             else if (yargsObj.listActorFilms) {
-                const flick = new Movie (yargsObj.title, yargsObj.actor)
-                await flick.listActorFilms(collection);
-
+                const flick = new Movie(yargsObj.title, yargsObj.actor, yargsObj.info);
+                console.log(await flick.listActorFilms(collection));
+                
             }
             else {
                 console.log("Incorrect command");
-                console.log(yargsObj);
+                // console.log(yargsObj);
+
             }
             await client.close();
 
